@@ -9,20 +9,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
-        <div id="Title">
+    <main id="Main">            
+        <div id="Title"> 
             <div id="Image">
-                <img src="">
+                <img id="Logo">
+                <input type="file" id="ImageInput" onchange="SetImage()" accept="image/*">
             </div>
-            <h1>LinkTree</h1>
-            <h2>Generator</h2>
+
+            <input type="text" class="Options" id="TitleInput" value="LinkTree">
+            <input type="text" class="Options" id="SubtitleInput" value="Generator">
+
         </div>
+
         <div id="Links">
-            <a href="" target="_blank"><h3>Your Link Here</h3></a>
-            <a href="" target="_blank"><h3>Your Link Here</h3></a>
-            <a href="" target="_blank"><h3>Your Link Here</h3></a>
-            <a href="" target="_blank"><h3>Your Link Here</h3></a>
+            <div class="LinkContainer">
+                <div class="Color" id="LinkColor"><input type="color" id="LinkColorInput"></div>
+                <input type="text" class="Options" id="LinkText" value="Your link here" onclick="event.preventDefault(); event.stopPropagation();">
+                <input type="text" class="Options" id="LinkURL" value="Paste the URL here" onclick="event.preventDefault(); event.stopPropagation();">
+            </div>
+
+            <div class="LinkContainer">
+                <input type="text" class="Options" id="LinkText" value="Your link here" onclick="event.preventDefault(); event.stopPropagation();">
+                <input type="text" class="Options" id="LinkURL" value="Paste the URL here" onclick="event.preventDefault(); event.stopPropagation();">
+            </div>
+
+            <div class="LinkContainer">
+                <input type="text" class="Options" id="LinkText" value="Your link here" onclick="event.preventDefault(); event.stopPropagation();">
+                <input type="text" class="Options" id="LinkURL" value="Paste the URL here" onclick="event.preventDefault(); event.stopPropagation();">
+            </div>
+
+            <div class="LinkContainer">
+                <input type="text" class="Options" id="LinkText" value="Your link here" onclick="event.preventDefault(); event.stopPropagation();">
+                <input type="text" class="Options" id="LinkURL" value="Paste the URL here" onclick="event.preventDefault(); event.stopPropagation();">
+            </div>
+   
+            <div class="Options" id="NewLink">
+                <img src="media/mais.png" id="Add">
+                <img src="media/mais.png" id="Remove">
+            </div>
         </div>
+
+        <div class="Color" id="MainColor"><input type="color" id="MainColorInput"></div>
     </main>
+
+    <div class="Options" id="Download">
+        <img src="https://images.icon-icons.com/1369/PNG/96/-file-download_90117.png" id="DownloadIcon">
+    </div>
+    
+    <div class="Color" id="BackgroundFirstColor"><input type="color" id="FirstColorInput"></div>
+    <div class="Color" id="BackgroundSecondColor"><input type="color" id="SecondColorInput"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>

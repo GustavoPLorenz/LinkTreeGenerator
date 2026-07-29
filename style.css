@@ -1,8 +1,13 @@
 body, html {
+    --FirstBackgroundColor: #f6ae2d;
+    --SecondBackgroundColor: #f26419;
+    --MainColor: #86bbd8;
+    --LinksColor: #33658a;
+
     margin: 0px;
     height: 100%;
 
-    background-image: linear-gradient(45deg,rgb(246, 174, 45),rgb(242, 100, 25));
+    background-image: linear-gradient(135deg, var(--FirstBackgroundColor), var(--SecondBackgroundColor));
 
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -16,7 +21,7 @@ main {
     top: 50%;
     left: 50%;
 
-    background-color: rgb(134, 187, 216);
+    background-color: var(--MainColor);
 
     border-radius: 2vh;
     box-shadow: 1vh 1vh 1vh rgba(0, 0, 0, 0.5);
@@ -37,11 +42,13 @@ main {
 #Image {
     height: 60%;
     aspect-ratio: 1/1;
+    contain: content;
 
     position: absolute;
     transform: translate(-50%,0);
     left: 50%;
 
+    background-color: white;
     background-image: url(https://images.icon-icons.com/912/PNG/512/add-picture_icon-icons.com_71785.png);
     background-size: 50%;
     background-repeat: no-repeat;
@@ -52,25 +59,19 @@ main {
     box-sizing: border-box;
 }
 
-h1 {
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 72%;
-    margin: 0px;
-}
+#Logo {
+    width: 100%;
+    height: 100%;
 
-h2 {
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 90%;
-    margin: 0px;
+    opacity: 100%;
 }
 
 #Links {
     width: 90%;
-    height: 60%;
+    height: 62%;
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
 
     position: absolute;
     transform: translate(-50%,0%);
@@ -78,32 +79,256 @@ h2 {
     top: 36%;
 }
 
-a {
+.LinkContainer {
     width: 100%;
-    height: 23%;
+    height: 100%;
     display: block;
+    flex: 1;
 
     position: relative;
-    margin-bottom: 4%;
+
+    background-color: var(--LinksColor);
+
+    border-radius: 2vh;
+    border: solid 0.5vh color-mix(in srgb, var(--LinksColor) 80%, black);
+    box-sizing: border-box;
+}
+
+#Download {
+    height: 10%;
+    aspect-ratio: 1/1;
+
+    position: absolute;
+    margin: 1%;
+    right: 0%;
+
+    background-color: var(--LinksColor);
+
+    border-radius: 2vh;
+    border: solid 0.5vh color-mix(in srgb, var(--LinksColor) 80%, black);
+    box-sizing: border-box;
+}
+
+#DownloadIcon {
+    width: 80%;
+
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+
+    filter: invert(100%)
+            drop-shadow(2px 0 0 color-mix(in srgb, var(--LinksColor) 80%, black))
+            drop-shadow(-2px 0 0 color-mix(in srgb, var(--LinksColor) 80%, black))
+            drop-shadow(0 2px 0 color-mix(in srgb, var(--LinksColor) 80%, black))
+            drop-shadow(0 -2px 0 color-mix(in srgb, var(--LinksColor) 80%, black));
+}
+
+#BackgroundColor {
+    height: 10%;
+    aspect-ratio: 1/1;
+
+    position: absolute;
+    margin: 1%;
+    right: 0%;
 
     background-color: rgb(51, 101, 138);
 
     border-radius: 2vh;
-    border: solid 0.5vh rgb(31, 81, 118); /*20 a menos no rgb*/
+    border: solid 0.5vh rgb(31, 81, 118);
     box-sizing: border-box;
 }
 
-a:visited, a:active {
-    color: unset;
+#NewLink {
+    height: 100%;
+    width: 100%;
+    flex: 0 0 5%;
+
+    margin: 0.5%;
+
+    position: relative;
 }
 
-h3 {
-    width: 100%;
+#Add {
+    height: 100%;
 
     position: absolute;
-    margin: 0px;
-    transform: translate(0%,-50%);
+    transform: translate(-50%,-50%);
     top: 50%;
+    left: 40%;
 
+    opacity: 100%; 
+}
+
+#Remove {
+    height: 100%;
+
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 0%;
+    left: 60%;
+    transform: rotate(45deg);
+
+    opacity: 100%; 
+}
+
+#TitleInput {
+    width: 90%;
+
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 72%;
+    left: 50%;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    border: none;
+    outline: none;
+
+    font-size: 200%;
+    color: black;
     text-align: center;
+    font-weight: bold;
+}
+
+#SubtitleInput {
+    width: 90%;
+
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 90%;
+    left: 50%;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    border: none;
+    outline: none;
+
+    font-size: 150%;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+}
+
+#LinkText {
+    width: 80%;
+
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 30%;
+    left: 50%;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    border: none;
+    outline: none;
+
+    font-size: 125%;
+    color: black;
+    text-align: center;
+}
+
+#LinkURL {
+    width: 80%;
+
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 77%;
+    left: 50%;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    border: none;
+    outline: none;
+
+    font-size: 80%;
+    color: black;
+    text-align: center;
+    text-decoration-line: underline;
+}
+
+#ImageInput {
+    height: 100%;
+    aspect-ratio: 1/1;
+
+    position: absolute;
+    transform: translate(-50%,0);
+    left: 50%;
+
+    opacity: 0%;
+
+    border-radius: 100%;
+}
+
+.Color {
+    border-radius: 100%;
+    border: solid 0.4vh rgb(0, 0, 0);
+    box-sizing: border-box;
+}
+
+#BackgroundFirstColor {
+    width: 3%;
+    aspect-ratio: 1;
+
+    position: absolute;
+    margin: 1%;
+}
+
+#BackgroundSecondColor {
+    width: 3%;
+    aspect-ratio: 1;
+    
+    position: absolute;
+    margin: 1%;
+    right: 0%;
+    bottom: 0%;
+}
+
+#MainColor {
+    width: 9%;
+    aspect-ratio: 1;
+    
+    position: absolute;
+    margin: 5%;
+    right: 0%;
+}
+
+#LinkColor {
+    width: 9%;
+    aspect-ratio: 1;
+    
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    right: 0%;
+}
+
+input[type=color] {
+    width: 0%;
+    height: 0%;
+
+    opacity: 0%;
+
+    pointer-events: none;
+}
+
+#FirstColorInput {
+    position: absolute;
+    bottom: 100%;
+}
+
+#SecondColorInput {
+    position: absolute;
+    top: 100%;
+    left: 100%;
+}
+
+#MainColorInput {
+    position: absolute;
+    bottom: 100%;
+}
+
+#LinkColorInput {
+    position: absolute;
+    bottom: 100%;
 }

@@ -23,6 +23,8 @@ main {
 
     background-color: var(--MainColor);
 
+    font-size: 2.3vh;
+
     border-radius: 2vh;
     box-shadow: 1vh 1vh 1vh rgba(0, 0, 0, 0.5);
 }
@@ -109,6 +111,10 @@ main {
     box-sizing: border-box;
 }
 
+#Download:hover {
+    cursor: pointer;
+}
+
 #DownloadIcon {
     width: 80%;
 
@@ -160,6 +166,10 @@ main {
     opacity: 100%; 
 }
 
+#Add:hover {
+    cursor: pointer;
+}
+
 #Remove {
     height: 100%;
 
@@ -170,6 +180,10 @@ main {
     transform: rotate(45deg);
 
     opacity: 100%; 
+}
+
+#Remove:hover {
+    cursor: pointer;
 }
 
 #TitleInput {
@@ -211,7 +225,7 @@ main {
 }
 
 #LinkText {
-    width: 80%;
+    width: 70%;
 
     position: absolute;
     transform: translate(-50%,-50%);
@@ -229,7 +243,7 @@ main {
 }
 
 #LinkURL {
-    width: 80%;
+    width: 70%;
 
     position: absolute;
     transform: translate(-50%,-50%);
@@ -260,10 +274,18 @@ main {
     border-radius: 100%;
 }
 
+#ImageInput:hover {
+    cursor: pointer;
+}
+
 .Color {
     border-radius: 100%;
     border: solid 0.4vh rgb(0, 0, 0);
     box-sizing: border-box;
+}
+
+.Color:hover {
+    cursor: pointer;
 }
 
 #BackgroundFirstColor {

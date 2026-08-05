@@ -1,128 +1,4 @@
-const ImageInput = document.getElementById("ImageInput")
-const Logo = document.getElementById("Logo")
-const AddLink = document.getElementById("Add")
-const RemoveLink = document.getElementById("Remove")
-const Title = document.getElementById("TitleInput")
-const Subtitle = document.getElementById("SubtitleInput")
 
-const FirstColorButton = document.getElementById("BackgroundFirstColor")
-const SecondColorButton = document.getElementById("BackgroundSecondColor")
-const MainColorButton = document.getElementById("MainColor")
-const LinkColorButton = document.getElementById("LinkColor")
-
-const SecondColorInput = document.getElementById("SecondColorInput")
-const FirstColorInput = document.getElementById("FirstColorInput")
-const MainColorInput = document.getElementById("MainColorInput")
-const LinkColorInput = document.getElementById("LinkColorInput")
-
-const Main = document.querySelector("Main")
-var Links = document.querySelectorAll(".LinkContainer")
-var LinksText = document.querySelectorAll("#LinkText")
-var LinksURL = document.querySelectorAll("#LinkURL")
-
-const Download = document.getElementById("Download")
-
-const Body = document.querySelector("body")
-
-var LinksIndex = 4
-var Exporting = false
-
-ImageInput.addEventListener("change", (event) => {
-  const Image = ImageInput.files[0]
-
-  const ImageURL = URL.createObjectURL(Image)
-
-  Logo.src = ImageURL
-})
-
-AddLink.addEventListener("click", (event) => {
-    if(LinksIndex<8){
-        var Links = document.getElementById("Links")
-
-        const NewLink = document.createElement("div")
-        NewLink.className = "LinkContainer"
-
-        NewLink.innerHTML = `
-            <input type="text" class="Options" id="LinkText" value="Your link here" onclick="event.preventDefault(); event.stopPropagation();">
-            <input type="text" class="Options" id="LinkURL" value="Paste the URL here" onclick="event.preventDefault(); event.stopPropagation();">`
-
-        Links.insertBefore(NewLink, document.getElementById("NewLink"))
-
-        LinksIndex+=1
-    }else{
-        window.alert("the maximum number of links is 7")
-    }
-})
-
-RemoveLink.addEventListener("click", (event) => {
-    if(LinksIndex > 1){
-        const Link = document.getElementsByClassName("LinkContainer")
-        Link[Link.length - 1].remove();
-        LinksIndex-=1
-    }else{
-        window.alert("the minimum number of links is 1")
-    }
-})
-
-FirstColorButton.addEventListener("click", (event) => {
-    FirstColorInput.click()
-})
-
-SecondColorButton.addEventListener("click", (event) => {
-    SecondColorInput.click()
-})
-
-MainColorButton.addEventListener("click", (event) => {
-    MainColorInput.click()
-})
-
-LinkColorButton.addEventListener("click", (event) => {
-    LinkColorInput.click()
-})
-
-
-FirstColorInput.addEventListener("change", (event) => {
-    Body.style.setProperty("--FirstBackgroundColor", FirstColorInput.value)
-})
-
-SecondColorInput.addEventListener("change", (event) => {
-    Body.style.setProperty("--SecondBackgroundColor", SecondColorInput.value)
-})
-
-MainColorInput.addEventListener("change", (event) => {
-    Body.style.setProperty("--MainColor", MainColorInput.value)
-})
-
-LinkColorInput.addEventListener("change", (event) => {
-    Body.style.setProperty("--LinksColor", LinkColorInput.value)
-})
-
-Download.addEventListener("click", (event) => {
-    if(!Logo.src){
-        window.alert("Select an image")
-        Exporting = true
-    }
-
-    if(Exporting != true){
-        Exporting = true
-
-        var Links = document.querySelectorAll(".LinkContainer")
-        var LinksText = document.querySelectorAll("#LinkText")
-        var LinksURL = document.querySelectorAll("#LinkURL")
-        var ExportLinks = ""
-
-        for(var i = 0; i<LinksIndex; i++){
-            console.log(Links[i])
-            ExportLinks+=`                        
-                <a class="LinkContainer" href="${LinksURL[i].value}">
-                    <h3 class="FinalLinkText">${LinksText[i].value}</h3>
-                </a>`
-        }
-
-        console.log(Logo.src)
-        
-        const Image = ImageInput.files[0]
-        const Export = `
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -133,10 +9,10 @@ Download.addEventListener("click", (event) => {
 
                 <style>
                     body, html {
-                        --FirstBackgroundColor: ${getComputedStyle(Body).getPropertyValue("--FirstBackgroundColor")};
-                        --SecondBackgroundColor: ${getComputedStyle(Body).getPropertyValue("--SecondBackgroundColor")};
-                        --MainColor: ${getComputedStyle(Body).getPropertyValue("--MainColor")};
-                        --LinksColor: ${getComputedStyle(Body).getPropertyValue("--LinksColor")};
+                        --FirstBackgroundColor: #f6ae2d;
+                        --SecondBackgroundColor: #f26419;
+                        --MainColor: #86bbd8;
+                        --LinksColor: #33658a;
 
                         margin: 0px;
                         height: 100%;
@@ -475,37 +351,29 @@ Download.addEventListener("click", (event) => {
                 <main id="Main">            
                     <div id="Title"> 
                         <div id="Image">
-                            <img id="Logo" src="${Image.name}">
+                            <img id="Logo" src="logo.jpg">
                         </div>
 
-                        <h1 id="FinalTitle">${Title.value}</h1>
-                        <h2 id="FinalSubtitle">${Subtitle.value}</h2>
+                        <h1 id="FinalTitle">LinkTree</h1>
+                        <h2 id="FinalSubtitle">Generator</h2>
 
                     </div>
 
                     <div id="Links">
-                        ${ExportLinks}
+                                                
+                <a class="LinkContainer" href="Paste the URL here">
+                    <h3 class="FinalLinkText">Your link here</h3>
+                </a>                        
+                <a class="LinkContainer" href="Paste the URL here">
+                    <h3 class="FinalLinkText">Your link here</h3>
+                </a>                        
+                <a class="LinkContainer" href="Paste the URL here">
+                    <h3 class="FinalLinkText">Your link here</h3>
+                </a>                        
+                <a class="LinkContainer" href="Paste the URL here">
+                    <h3 class="FinalLinkText">Your link here</h3>
+                </a>
                     </div>
                 </main>
             </body>
-            </html>`
-
-        const Zip = new JSZip()
-
-        Zip.file("index.html",Export)
-        Zip.file(Image.name,Image)
-
-        Zip.generateAsync({type:"blob"}).then(function(Content){
-            Download.href = URL.createObjectURL(Content)
-            Download.click()
-
-            setTimeout(() => {
-                URL.revokeObjectURL(Download.href);
-                Exporting = false;
-            }, 1000);
-        })
-    }
-    setTimeout(() => {
-        Exporting = false;
-    }, 1000);
-})
+            </html>

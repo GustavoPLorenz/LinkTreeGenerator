@@ -13,7 +13,7 @@
         <div id="Title"> 
             <div id="Image">
                 <img id="Logo">
-                <input type="file" id="ImageInput" onchange="SetImage()" accept="image/*">
+                <input type="file" id="ImageInput" accept="image/*">
             </div>
 
             <input type="text" class="Options" id="TitleInput" value="LinkTree">
@@ -51,14 +51,15 @@
 
         <div class="Color" id="MainColor"><input type="color" id="MainColorInput"></div>
     </main>
-
-    <div class="Options" id="Download">
+    
+    <a class="Options" id="Download" download="LinkTree">
         <img src="https://images.icon-icons.com/1369/PNG/96/-file-download_90117.png" id="DownloadIcon">
-    </div>
+    </a>    
     
     <div class="Color" id="BackgroundFirstColor"><input type="color" id="FirstColorInput"></div>
     <div class="Color" id="BackgroundSecondColor"><input type="color" id="SecondColorInput"></div>
 
+    <script src="https://unpkg.com/jszip@3.7.1/dist/jszip.min.js"></script>   
     <script src="script.js"></script>
 </body>
 </html>
